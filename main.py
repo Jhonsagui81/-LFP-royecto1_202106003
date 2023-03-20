@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter.messagebox import *
 
+###N0 es el verdadero main xd
 
 root = Tk()  ##Crea ventana principal
 
