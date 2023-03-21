@@ -1,3 +1,4 @@
+from Operaciones import Operacion
 from Tonken import Tonken
 
 class Automata:
@@ -14,9 +15,9 @@ class Automata:
 #hacer prueba que pasa si intento hacer minuscula un numero tomado como caracter 
 #Ver que el estado de aceptacion este bien en el codigo y en
 
-    def analizar(self, cadena): #Analiza todo nuestro archivo - cadena tendra todo el archivo
-        operacion = False
-        operaciones = []
+    def analizar(self, cadena, operacion:Operacion): #Analiza todo nuestro archivo - cadena tendra todo el archivo
+        operandos = []
+        tipo_operacion = ""
         token = ''
 
         while len(cadena) > 0:
@@ -102,10 +103,16 @@ class Automata:
                     self.estado_actual = 8
                 elif char == '"': 
                     self.guardar_token(token)
+                    tipo_operacion = token #Guardar el tipo de operacion
                     token = ''
                     self.guardar_token(char)
                     self.estado_anterior = 8
                     self.estado_actual = 9
+                    #Generar nueva Operacion
+                    op = Operacion(tipo_operacion)
+                    valor = self.analizar(cadena[1:], op)  #Recursividad
+                    cadena = valor[0]   #Para eliminar la caneda leida en recursividad, ya no se desea leer de nuevo
+                    operandos.append(valor[1])
 
             elif self.estado_actual == 9:    #q9
                 if char == ',':
@@ -122,6 +129,8 @@ class Automata:
                     self.guardar_token(char)
                     self.estado_anterior = 10
                     self.estado_actual = 18
+                    operacion.operandos = operandos
+                    return [cadena, operacion]
 
             elif self.estado_actual == 11:   #q11
                 if char.lower() in self.letras:
@@ -165,16 +174,33 @@ class Automata:
                     self.estado_actual = 15
                 elif char == '}': #avanza 
                     self.guardar_token(token)
+                    operandos.append(token)
                     token = ''
                     self.guardar_token(char)
                     self.estado_anterior = 15
                     self.estado_actual = 18
-                elif char == ',' or char == ']': #bucle a q10
+                    operacion.operandos = operandos
+                    return [cadena, operacion]
+
+                elif char == ',': #bucle a q10
                     self.guardar_token(token)
+                    operandos.append(token) #Toma valor numerico
                     token = ''
                     self.guardar_token(char)
                     self.estado_anterior = 15
                     self.estado_actual = 10
+                    # operacion.operandos = operandos
+                    # return [cadena, operacion]
+
+                elif char == ']': #bucle a q10
+                    self.guardar_token(token)
+                    operandos.append(token)
+                    token = ''
+                    self.guardar_token(char)
+                    self.estado_anterior = 15
+                    self.estado_actual = 10
+                    operacion.operandos = operandos
+                    return [cadena, operacion]
 
             elif self.estado_actual == 18:   #q18 
                 if char == ',':     #bucle a q1
@@ -248,8 +274,8 @@ class Automata:
             #Para finalizar ciclo 
             self.columna += 1  #aumenta columna 
             cadena = cadena[1:] #Elimina el caracter estudiado
-        
-        return self.estado_actual in self.estados_aceptacion #Retorna True or False
+        operacion.operandos = operacion 
+        return [cadena, operandos]
     
 
     def guardar_token(self, lexema):
@@ -265,7 +291,11 @@ class Automata:
 
 autom = Automata()
 cadena = open('prueba.txt', 'r').read()
-print(cadena)
-resultado = autom.analizar(cadena)
+# print(cadena)
+resultado = autom.analizar(cadena, Operacion('suma'))
 
-autom.imprimir_tokens()
+# autom.imprimir_tokens()
+if autom.estado_actual in autom.estados_aceptacion:
+    for oper in resultado[1]:
+        resultado = oper.operar()
+        print(resultado[0], "=", resultado[1])
