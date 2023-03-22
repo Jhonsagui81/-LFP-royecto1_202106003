@@ -4,15 +4,14 @@ class Operacion:
         self.tipo = tipo 
         self.operandos = []  #lista los valores de la operacion
         self.texto = ''
+        self.aux = 0
 
 
-    def operar(self, id):  ##Comno se pueden sumar objetos se creo esta funcion
+    def operar(self, id): 
         res = '' # 1 + (1 + 1) = 3      #describe la operacion string  
-        resnum = 0          #Es la operacion ya realizada, resultado
-        if self.tipo.lower() == 'suma':  #Se valida el tipo con una palabra
-            
+        resnum = 0          #resultado de la operacion
+        if self.tipo.lower() == 'suma':  
             for operando in self.operandos:
-                # print("los valores: "+str(operando))  trae valores y algo raro
                 if type(operando) is not Operacion:  #significa que es algo simple como un NUMERO 
                     #resultado numerico 
                     res += operando + ' + '
@@ -23,21 +22,22 @@ class Operacion:
                     self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
                 else:
                     operado = operando.operar(id)     #Recursividad en caso la operacion venga anidada con el else llamamos de nuevo para traer los numeros
-                    # regresa con valores
-                    aux = 0
-                    res += "(" + operado[0] + ") + "#y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
-                    resnum += operado[1]
+                    # regresa con valores - [cadena, resultado]
+                    #en caso venga anidada sera aux para obtener nodos internos
+                    res += "(" + operado[0] + ") + "# y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
+                    resnum += operado[1]  #Se suma el resultado de la operacion anidada al total
                     
-                    operado[0] = re.sub("\+","",operado[0])
-                    anidada = operado[0].split()
-                    for i in anidada:
-                        aux += int(i)
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n "
-                        self.texto += f"\t{str(self.tipo.lower())+str(id+100)} -> {str(i)} [shape=record color=red]\n"  
-                    self.texto += f"\t{str(self.tipo.lower())+str(id+100)} [shape=circle style=filled color = blue, label=<{'suma: '+ str(aux)}>]\n "
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(self.tipo.lower())+str(id+100)} [shape=record color=red]\n"
+                    #Descomponer operacion anidada
+                    operado[0] = re.sub("\+","",operado[0]) #quita el signo 
+                    anidada = operado[0].split()    #se descompone 
+                    for i in anidada:   #se itera 
+                        self.aux += int(i)   #se crea el total interno 
+                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                        self.texto += f"\t{str(self.tipo.lower())+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                    self.texto += f"\t{str(self.tipo.lower())+str(id+100)} [shape=circle style=filled color = blue, label=<{'suma: '+ str(self.aux)}>]\n "  #crea subnodo del original
+                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(self.tipo.lower())+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
             #finaliza For
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{'suma: '+ str(resnum)}>]\n "
+            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{'suma: '+ str(resnum)}>]\n " #nodo original de cada operacion
         
         elif self.tipo.lower() == 'multiplicacion':
             resnum = 1
