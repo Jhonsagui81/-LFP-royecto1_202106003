@@ -2,8 +2,33 @@ from tkinter import *
 from tkinter import filedialog as FileDialog
 from io import open
 
-ruta = ""
+#para poder analizar texto
+from automata import Automata
+from Operaciones import Operacion
 
+
+
+ruta = ""
+#Analizar
+def Analizar():
+    funcion = Automata()
+    print("entra a analizar")
+    
+    contenido = caja_texto.get(1.0, 'end-1c')
+    
+    resultado = funcion.analizar(contenido, Operacion('suma'))
+    
+    funcion.imprimrResultados(resultado)
+
+        # caja_texto.delete(1.0, END)
+        # # autom.imprimir_tokens()
+        # if funcion.estado_actual in funcion.estados_aceptacion:
+        #     for oper in resultado[1]:
+        #         resultado = oper.operar()
+        #         print(resultado[0], "=", resultado[1])
+
+
+#Guardar como...
 def savefileas():    
     try:
         path = FileDialog.asksaveasfile(filetypes = (("Text files", "*.txt"), ("All files", "*.*"))).name
@@ -14,6 +39,7 @@ def savefileas():
     
     with open(path, 'w') as f:
         f.write(caja_texto.get('1.0', END))
+
 #Guardar en el mismo archivo 
 def Guardar():
     if ruta != "":
@@ -24,6 +50,7 @@ def Guardar():
     else:
         savefileas()
 
+#Abrir Archivo
 def AbrirArchivo():
     print("HAs presionado para crear un nuevo archivo")
     global ruta
@@ -62,7 +89,7 @@ caja_texto.config(width=40, height=20, bg="gray")
 
 ##CREAR BOTONES
 etiqueta = Label(root, text="", bg="White").grid(row=1, column=1)
-boton_analizar = Button(root, text="Analizar", bg="Blue", fg="White", padx=30).grid(row=2, column=0)
+boton_analizar = Button(root, text="Analizar", bg="Blue", fg="White", padx=30, command=Analizar).grid(row=2, column=0)
 boton_guardar = Button(root, text="Guardar", bg="Green", fg="White", padx=45, command=Guardar).grid(row=2, column=1)
 boton_errores = Button(root, text="Errores", bg="Red", fg="White", padx=30).grid(row=2, column=2)
 

@@ -1,10 +1,17 @@
 from Operaciones import Operacion
+from Resultados import ResultadoPDF
+from Error import Error
 from Tonken import Tonken
+
+import graphviz
+import os
+import re
 
 class Automata:
     letras = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s", "t", "u","v","w","x","y","z", "-"]
     numeros = ["1","2","3","4","5","6","7","8","9","0","."]
     tabla_tokens = []
+    tabla_errores = []
     cadena = ''
     fila = 0
     columna = 0
@@ -19,6 +26,7 @@ class Automata:
         operandos = []
         tipo_operacion = ""
         token = ''
+        bol_error = False 
 
         while len(cadena) > 0:
             char = cadena[0]
@@ -43,6 +51,11 @@ class Automata:
                     self.guardar_token(char)
                     self.estado_anterior = 0
                     self.estado_actual = 1
+                # else:
+                #     bol_error = True
+                #     self.estado_actual = 100  #Un error grave 
+                #     self.guardar_error(char)
+
 
             elif self.estado_actual == 1:     # q1
                 if char == '{':
@@ -181,7 +194,7 @@ class Automata:
                     self.estado_actual = 18
                     operacion.operandos = operandos
                     return [cadena, operacion]
-
+                
                 elif char == ',': #bucle a q10
                     self.guardar_token(token)
                     operandos.append(token) #Toma valor numerico
@@ -189,8 +202,7 @@ class Automata:
                     self.guardar_token(char)
                     self.estado_anterior = 15
                     self.estado_actual = 10
-                    # operacion.operandos = operandos
-                    # return [cadena, operacion]
+
 
                 elif char == ']': #bucle a q10
                     self.guardar_token(token)
@@ -202,6 +214,7 @@ class Automata:
                     operacion.operandos = operandos
                     return [cadena, operacion]
 
+##FALTA EL MANEJO DE ERRORES APARTIR DE ESTA PARTE .
             elif self.estado_actual == 18:   #q18 
                 if char == ',':     #bucle a q1
                     self.guardar_token(char)
@@ -282,20 +295,48 @@ class Automata:
         nuevo_token = Tonken(self.fila, self.columna, lexema)
         self.tabla_tokens.append(nuevo_token)
     
+    def guardar_error(self, lexema):
+        nuevo_token = Error(self.fila, self.columna, lexema)
+        self.tabla_errores.append(nuevo_token)
+
     def imprimir_tokens(self):
         print('-'*31)
         print ("| {:<4} | {:<7} | {:<10} |".format('Fila','Columna','Lexema'))
         print('-'*31)
         for token in self.tabla_tokens:
             print ("| {:<4} | {:<7} | {:<10} |".format(token.fila, token.columna, token.lexema))
+    
+    def imprimrResultados(self, operandos):
+        # lista_Operaciones = []
+        # lista_Resultados = []
+        num = 0
+        texto = ''
+        texto +="digraph {\n"
+        texto += "\trankdir=TB\n"
+        if self.estado_actual in self.estados_aceptacion:
+            for oper in operandos[1]:
+                num += 1
+                resultado = oper.operar(num) #se crea objeto Operaciones
+                texto += resultado[2]
+                print(resultado[0], "=", resultado[1])  #tendra una lista de dos elementos [string = int]
+                # lista_Operaciones.append(resultado[0])
+                # lista_Resultados.append(resultado[1])
+            # ResultadoPDF(lista_Operaciones, lista_Resultados)
+        texto += "}\n"
+        file = open("grafo.dot", "w")
+        file.write(texto)
+        file.close()
+        os.system("dot -Tpdf grafo.dot -o  grafo.pdf")
 
-autom = Automata()
-cadena = open('prueba.txt', 'r').read()
-# print(cadena)
-resultado = autom.analizar(cadena, Operacion('suma'))
+                    
 
-# autom.imprimir_tokens()
-if autom.estado_actual in autom.estados_aceptacion:
-    for oper in resultado[1]:
-        resultado = oper.operar()
-        print(resultado[0], "=", resultado[1])
+# autom = Automata()
+# cadena = open('prueba.txt', 'r').read()
+
+# resultado = autom.analizar(cadena, Operacion('suma'))
+
+# # autom.imprimir_tokens()
+# if autom.estado_actual in autom.estados_aceptacion:
+#     for oper in resultado[1]:
+#         resultado = oper.operar()
+#         print(resultado[0], "=", resultado[1])
