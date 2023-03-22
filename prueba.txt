@@ -1,16 +1,16 @@
 {
 	{
-		"Operacion":"suma",
+		"Operacion":"resta",
 		"Valor1":4.56,
 		"Valor2":6.45
 	},
 	{
-		"Operacion":"Suma",
+		"Operacion":"resta",
 		"Valor1":5,
 		"Valor2":
 		[
 			"Operacion":"suma",
-			"Valor1":0,
+			"Valor1":4,
 			"Valor2":3
 		]
 	},
