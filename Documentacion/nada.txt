@@ -1,0 +1,31 @@
+{
+	{
+		"Operacion":"Suma",
+		"Valor1":4.5,
+		"Valor2":5.422
+	},
+	{
+		"Operacion":"Resta",
+		"Valor1":4.65,
+		"Valor2":
+		[
+			"Operacion":"Suma",
+			"Valor1":10,
+			"Valor2":3
+		]dsfassadasd
+sadfasd
+	},
+	{
+		"Operacion":"Suma",
+		"Valor1":
+		[
+			"Operacion":"Suma",
+			"Valor1":90
+		]
+		"Valor2":5.65
+	} 
+	"Texto":"Realizacion de Operaciones",
+	"Color-Fondo-Nodo":"Amarillo",
+	"Color-Fuente-Nodo":"Rojo",
+	"Forma-Nodo":"Circulo"
+}

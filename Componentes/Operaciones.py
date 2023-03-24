@@ -32,6 +32,7 @@ class Operacion:
                     #Descomponer operacion anidada
                     operado[0] = re.sub("\+","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\-","",operado[0]) #quita el signo 
+                    operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                     anidada = operado[0].split()    #se descompone 
                     for i in anidada:   #se itera 
                         self.aux += int(i)   #se crea el total interno 
@@ -43,6 +44,7 @@ class Operacion:
             self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{'suma: '+ str(resnum)}>]\n " #nodo original de cada operacion
         #RESTA
         if self.tipo.lower() == 'resta':  
+            
             for operando in self.operandos:
                 cont_resta +=1
                 if type(operando) is not Operacion:  #significa que es algo simple como un NUMERO 
@@ -62,15 +64,14 @@ class Operacion:
                     #en caso venga anidada sera aux para obtener nodos internos
                     res += "(" + operado[0] + ") - "# y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
                     resnum -= operado[1]  #Se suma el resultado de la operacion anidada al total
-
-                    cont_sub_resta = 0
                     
                     #Descomponer operacion anidada
                     operado[0] = re.sub("\+","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\-","",operado[0]) #quita el signo 
+                    operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                     anidada = operado[0].split()    #se descompone 
                     for i in anidada:   #se itera 
-                        if cont_sub_resta == 1:
+                        if cont_resta == 1:
                             self.aux += int(i)   #se crea el total interno 
                         else:
                             self.aux -= int(i)
