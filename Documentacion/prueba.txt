@@ -1,19 +1,19 @@
 {
 	{
-		"Operacion":"rESTA",
-		"Valor1":4.5,
-		"Valor2":5.422
+		"Operacion":"Division",
+		"Valor1":0,
+		"Valor2":45
 	},
 	{
-		"Operacion":"rESTA",
+		"Operacion":"Division",
 		"Valor1":[
-			"Operacion":"Multiplicacion",
+			"Operacion":"division",
 			"Valor1":5,
 			"Valor2":3
 			],
 		"Valor2":
 		[
-			"Operacion":"Suma",
+			"Operacion":"suma",
 			"Valor1":10,
 			"Valor2":4
 		]
@@ -22,7 +22,7 @@
 		"Operacion":"Suma",
 		"Valor1":
 		[
-			"Operacion":"Suma",
+			"Operacion":"Multiplicacion",
 			"Valor1":90
 		]
 		"Valor2":5.65
