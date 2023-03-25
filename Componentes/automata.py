@@ -403,7 +403,7 @@ class Automata:
             for oper in operandos[1]:
                 num += 1
                 resultado = oper.operar(num) #se crea objeto Operaciones
-                texto += resultado[2]
+                texto += resultado[2] #Info de los nodos 
                 print(resultado[0], "=", resultado[1])  #tendra una lista de dos elementos [string = int]
                 # lista_Operaciones.append(resultado[0])
                 # lista_Resultados.append(resultado[1])
