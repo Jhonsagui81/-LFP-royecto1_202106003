@@ -2,70 +2,10 @@
 	{
 		"No.":1
 		"Descripcion-Token":{ 
-			"Lexema": "
-			"Tipo": Error Sintactico
-			"Columna": 29
-			"Fila": 13
-		}
-	},
-{
-	{
-		"No.":2
-		"Descripcion-Token":{ 
-			"Lexema": ,
-			"Tipo": Error Sintactico
-			"Columna": 30
-			"Fila": 13
-		}
-	},
-{
-	{
-		"No.":3
-		"Descripcion-Token":{ 
-			"Lexema": "
-			"Tipo": Error Sintactico
-			"Columna": 16
-			"Fila": 14
-		}
-	},
-{
-	{
-		"No.":4
-		"Descripcion-Token":{ 
-			"Lexema": 1
-			"Tipo": Error Lexico
-			"Columna": 22
-			"Fila": 14
-		}
-	},
-{
-	{
-		"No.":5
-		"Descripcion-Token":{ 
-			"Lexema": :
-			"Tipo": Error Sintactico
-			"Columna": 23
-			"Fila": 14
-		}
-	},
-{
-	{
-		"No.":6
-		"Descripcion-Token":{ 
-			"Lexema": 1
-			"Tipo": Error Sintactico
-			"Columna": 24
-			"Fila": 14
-		}
-	},
-{
-	{
-		"No.":7
-		"Descripcion-Token":{ 
-			"Lexema": 0
-			"Tipo": Error Sintactico
-			"Columna": 25
-			"Fila": 14
+			"Lexema": /
+			"Tipo": Error Logico
+			"Columna": 0
+			"Fila": 0
 		}
 	},
 }

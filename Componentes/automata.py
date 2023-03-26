@@ -414,6 +414,14 @@ class Automata:
         file.close()
         os.system("dot -Tpdf ./Documentacion/grafo.dot -o  ./Documentacion/grafo.pdf")
 
+    def ErrorLogico(self, operandos):
+        
+        ex = 0
+        if self.estado_actual in self.estados_aceptacion:
+            for ioe in operandos[1]:
+                ex += 1
+                resul = ioe.operarErrores(ex)
+            return resul[4]
 
 # autom = Automata()
 # cadena = open('prueba.txt', 'r').read()

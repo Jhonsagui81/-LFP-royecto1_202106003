@@ -1,31 +1,32 @@
 {
 	{
-		"Operacion":"Division",
-		"Valor1":0,
-		"Valor2":45
+		"Operacion":"Potencia",
+		"Valor1":2,
+		"Valor2":3
 	},
 	{
-		"Operacion":"Division",
+		"Operacion":"potencia",
 		"Valor1":[
-			"Operacion":"division",
+			"Operacion":"potencia",
 			"Valor1":5,
-			"Valor2":3
+			"Valor2":1.5
 			],
 		"Valor2":
 		[
-			"Operacion":"suma",
-			"Valor1":10,
-			"Valor2":4
+			"Operacion":"potencia",
+			"Valor1":4,
+			"Valor2":1
 		]
 	},
 	{
-		"Operacion":"Suma",
+		"Operacion":"Potencia",
 		"Valor1":
 		[
-			"Operacion":"Multiplicacion",
-			"Valor1":90
-		]
-		"Valor2":5.65
+			"Operacion":"suma",
+			"Valor1":1,
+			"Valor2":2
+		],
+		"Valor2":6
 	} 
 	"Texto":"Realizacion de Operaciones",
 	"Color-Fondo-Nodo":"Amarillo",

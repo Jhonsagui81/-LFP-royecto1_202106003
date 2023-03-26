@@ -65,22 +65,52 @@ def abrir_Ayuda():
 #Analizar
 def Analizar():
     funcion = Automata()  #objeto tipo Automata
+    operacion = Operacion('Error')
     contenido = caja_texto.get(1.0, 'end-1c') #Extrae contenido de la caja (Interfaz)
     
     funcion.reiniciando()
+    operacion.Reiniciando()
+
     resultado = funcion.analizar(contenido, Operacion('suma'))  #Se llama al automata y se le pasa lo extraido.  REtorna valores
     lista_errores = funcion.imprimir_errores()  #REtorna la lista de errores 
+    # lista_errores_logicos = funcion.ErrorLogico(resultado)
 
     #Borrar datos del doc 
     texto = ''
     #Si hay errores -> no pdf 
     if len(lista_errores) == 0:
         print("No hay errores")
+        # if len(lista_errores_logicos) == 0:
+        # print("No hay errores")
         funcion.imprimrResultados(resultado)
+        # else:
+        #     print("Si hay errores")
+        #     caja_texto.delete(1.0, tk.END)
+        #     caja_texto.insert(1.0, "ALERTA: Existen ERRORES LOGICOS en el documento, De clic en el boton 'Errores' para ver los detalles")
+
+        #     for log in lista_errores_logicos:
+        #         texto += '{\n'
+        #         texto += '\t{\n'
+        #         texto += f'\t\t"No.":{log.id}\n'
+        #         texto += '\t\t"Descripcion-Token":{ \n'
+        #         texto += f'\t\t\t"Lexema": {log.lexema}\n'
+        #         texto += f'\t\t\t"Tipo": {log.tipoError}\n'
+        #         texto += f'\t\t\t"Columna": {log.columna}\n'
+        #         texto += f'\t\t\t"Fila": {log.fila}\n'
+        #         texto += '\t\t}\n'
+        #         texto += '\t},\n'
+        #     texto += '}\n'
+        #     operacion.Reiniciando()
+        #     lista_errores_logicos = []
+        #     print(texto)
+        #     file = open("./Documentacion/Errores.txt", "w")
+        #     file.write(texto)
+        #     file.close()
+            
     else:
         print("Si hay errores")
         caja_texto.delete(1.0, tk.END)
-        caja_texto.insert(1.0, "ALERTA: Existen errores en el documento, De clic en el boton 'Errores' para seleccionar el archivo que los contiene")
+        caja_texto.insert(1.0, "ALERTA: Existen errores en el documento, De clic en el boton 'Errores' para ver los detalles")
         
         for val in lista_errores:
             texto += '{\n'
@@ -99,6 +129,8 @@ def Analizar():
         file.write(texto)
         file.close()
 
+    #si hay errores no pdf
+    
 #Abrir Archivo
 def AbrirArchivoError():
 
