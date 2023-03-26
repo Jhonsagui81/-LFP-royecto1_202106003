@@ -399,6 +399,8 @@ class Automata:
         texto = ''
         texto +="digraph {\n"
         texto += "\trankdir=TB\n"
+        texto += "\tsubgraph cluster1 {\n"
+        texto += "\t\trank=same\n"
         if self.estado_actual in self.estados_aceptacion:
             for oper in operandos[1]:
                 num += 1
@@ -408,6 +410,7 @@ class Automata:
                 # lista_Operaciones.append(resultado[0])
                 # lista_Resultados.append(resultado[1])
             # ResultadoPDF(lista_Operaciones, lista_Resultados)
+        texto += "\t}\n"
         texto += "}\n"
         file = open("./Documentacion/grafo.dot", "w")
         file.write(texto)

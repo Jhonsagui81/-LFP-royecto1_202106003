@@ -40,8 +40,8 @@ class Operacion:
                     resnum += round(float(operando), 2) #con flotante para evitar clavos
                     
                     #grafica
-                    self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                    self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
 
                     
                 else:
@@ -60,12 +60,12 @@ class Operacion:
                     anidada = operado[0].split()    #se descompone 
                     for i in anidada:   #se itera 
                         self.aux += float(i)   #se crea el total interno 
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                        self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                    self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                        self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                    self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
             #finaliza For
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
         
         #RESTA
         elif self.tipo.lower() == 'resta':  
@@ -82,8 +82,8 @@ class Operacion:
                         resnum -= round(float(operando), 2)
 
                     #grafica
-                    self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                    self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
 
                     
                 else:
@@ -107,13 +107,13 @@ class Operacion:
                     anidada = operado[0].split()    #se descompone 
                     for i in anidada:   #se itera 
 
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                        self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                    self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1], 2))}>]\n "  #crea subnodo del original
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                        self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                    self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1], 2))}>]\n "  #crea subnodo del original
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
             #finaliza For
             cont_resta = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " 
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " 
 
         #MULTIPLICACION
         elif self.tipo.lower() == 'multiplicacion':
@@ -124,8 +124,8 @@ class Operacion:
                 if type(operando) is not Operacion:
                     #Grafica
                     tipo = "Multiplicacion"
-                    self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                    self.texto += f"\t{str(tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                    self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                    self.texto += f"\t\t{str(tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
 
                     res += operando + ' * '
                     resnum = resnum * round(float(operando), 2)
@@ -145,12 +145,12 @@ class Operacion:
                     anidada = operado[0].split()    #se descompone 
                     #grafica
                     for i in anidada:   #se itera 
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                        self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                    self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3]) +': '+ str(round(operado[1]))}>]\n "  #crea subnodo del original
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                        self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                    self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3]) +': '+ str(round(operado[1]))}>]\n "  #crea subnodo del original
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
             #termina for
-            self.texto += f"\t{str(tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n "
+            self.texto += f"\t\t{str(tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n "
         
         #Division
         elif self.tipo.lower() == 'division':  
@@ -175,8 +175,8 @@ class Operacion:
                         res += operando + ' / '
                         resnum += round(float(operando), 2)
                     #grafica
-                    self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                    self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
 
                     
                 else:
@@ -205,13 +205,13 @@ class Operacion:
                     operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                     anidada = operado[0].split()    #se descompone 
                     for i in anidada:   #se itera 
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                        self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                    self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+':'+ str(round(operado[1]))}>]\n "  #crea subnodo del original
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                        self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                    self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+':'+ str(round(operado[1]))}>]\n "  #crea subnodo del original
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
             #finaliza For.
             cont_division = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
 
         #Potencia math.pow(x,y)
         elif self.tipo.lower() == 'potencia':  
@@ -232,8 +232,8 @@ class Operacion:
                             resnum = resnum * aux #con flotante para evitar clavos
 
                     #grafica
-                    self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                    self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
 
                     
                 else:
@@ -258,13 +258,13 @@ class Operacion:
                     operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                     anidada = operado[0].split()    #se descompone 
                     for i in anidada:   #se itera 
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                        self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                    self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+':'+ str(round(operado[1]))}>]\n "  #crea subnodo del original
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                        self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                    self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+':'+ str(round(operado[1]))}>]\n "  #crea subnodo del original
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
             #finaliza For
             cont_potencia = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
 
         #Raiz math.sqrt(x)
         elif self.tipo.lower() == 'raiz':  
@@ -281,8 +281,8 @@ class Operacion:
                         resnum = math.sqrt(float(operando)) #con flotante para evitar clavos
 
                         #grafica
-                        self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                        self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
                     elif cont_raiz == 2:
                         #Error - Solo se permite 1 valor 
                         print("Error logico, solo se permite 1 valor xd")
@@ -303,17 +303,17 @@ class Operacion:
                         operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                         anidada = operado[0].split()    #se descompone 
                         for i in anidada:   #se itera 
-                            self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                            self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                        self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                            self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                            self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
                     else:
                         print("Error logico, solo se permite 1 valor rt")
                         #Pendiende guardarError 
                     
             #finaliza For
             cont_raiz = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
         
         #Inverso 1/x
         elif self.tipo.lower() == 'inverso':  
@@ -329,8 +329,8 @@ class Operacion:
                         resnum = 1/float(operando) #con flotante para evitar clavos
 
                         #grafica
-                        self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                        self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
                     elif cont_inverso == 2:
                         #Error - Solo se permite 1 valor 
                         print("Error logico, solo se permite 1 valor xd")
@@ -351,16 +351,16 @@ class Operacion:
                         operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                         anidada = operado[0].split()    #se descompone 
                         for i in anidada:   #se itera 
-                            self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                            self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                        self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                            self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                            self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
                     else:
                         print("Error logico, solo se permite 1 valor rt")
                         #Pendiende guardarError 
             #Finaliza for        
             cont_inverso = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
         
         #Sena math.sin(x)
         elif self.tipo.lower() == 'seno':  
@@ -376,8 +376,8 @@ class Operacion:
                         resnum = math.sin(x) #con flotante para evitar clavos
 
                         #grafica
-                        self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                        self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
                     elif cont_seno == 2:
                         #Error - Solo se permite 1 valor 
                         print("Error logico, solo se permite 1 valor xd")
@@ -398,16 +398,16 @@ class Operacion:
                         operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                         anidada = operado[0].split()    #se descompone 
                         for i in anidada:   #se itera 
-                            self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                            self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                        self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                            self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                            self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
                     else:
                         print("Error logico, solo se permite 1 valor rt")
                         #Pendiende guardarError 
             #finaliza For
             cont_seno = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
         
         #Coseno math.cos(x)
         elif self.tipo.lower() == 'coseno':  
@@ -423,8 +423,8 @@ class Operacion:
                         resnum = math.cos(x) #con flotante para evitar clavos
 
                         #grafica
-                        self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                        self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
                     elif cont_coseno == 2:
                         #Error - Solo se permite 1 valor 
                         print("Error logico, solo se permite 1 valor xd")
@@ -445,16 +445,16 @@ class Operacion:
                         operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                         anidada = operado[0].split()    #se descompone 
                         for i in anidada:   #se itera 
-                            self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                            self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                        self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                            self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                            self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
                     else:
                         print("Error logico, solo se permite 1 valor rt")
                         #Pendiende guardarError 
             #finaliza For
             cont_coseno = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
         
         #tan math.tan(x)
         elif self.tipo.lower() == 'tangente':  
@@ -470,8 +470,8 @@ class Operacion:
                         resnum = math.tan(x) #con flotante para evitar clavos
 
                         #grafica
-                        self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                        self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
                     elif cont_tangente == 2:
                         #Error - Solo se permite 1 valor 
                         print("Error logico, solo se permite 1 valor xd")
@@ -492,16 +492,16 @@ class Operacion:
                         operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                         anidada = operado[0].split()    #se descompone 
                         for i in anidada:   #se itera 
-                            self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                            self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                        self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
-                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                            self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                            self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
+                        self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
                     else:
                         print("Error logico, solo se permite 1 valor rt")
                         #Pendiende guardarError 
             #finaliza For
             cont_tangente = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
         
         #Modulo -> math.fmod(x,y)
         elif self.tipo.lower() == 'mod':  
@@ -526,8 +526,8 @@ class Operacion:
                         res += operando + ' & '
                         resnum += round(float(operando), 2)
                     #grafica
-                    self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                    self.texto += f"\t\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
 
                     
                 else:
@@ -556,13 +556,13 @@ class Operacion:
                     operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
                     anidada = operado[0].split()    #se descompone 
                     for i in anidada:   #se itera 
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                        self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                    self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+':'+ str(round(operado[1]))}>]\n "  #crea subnodo del original
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                        self.texto += f"\t\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                        self.texto += f"\t\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                    self.texto += f"\t\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+':'+ str(round(operado[1]))}>]\n "  #crea subnodo del original
+                    self.texto += f"\t\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
             #finaliza For.
             cont_mod = 0
-            self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
+            self.texto += f"\t\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
 
         
         return [res[0:-3], resnum, self.texto, tipo, self.errores_tabla] # [0: -3] para eliminar caracteres inecesarios

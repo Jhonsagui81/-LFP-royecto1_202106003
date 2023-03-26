@@ -1,31 +1,29 @@
 {
 	{
-		"Operacion":"raiz",
-		"Valor1":9,
-		
+		"Operacion":"Suma",
+		"Valor1":4.5,
+		"Valor2":5.32
 	},
 	{
-		"Operacion":"potencia",
-		"Valor1":[
-			"Operacion":"potencia",
-			"Valor1":3,
-			"Valor2":1.5
-			],
+		"Operacion":"Resta",
+		"Valor1":4.5,
 		"Valor2":
 		[
-			"Operacion":"resta",
-			"Valor1":4,
-			"Valor2":2
+			"Operacion":"potencia",
+			"Valor1":10,
+			"Valor2":3
 		]
 	},
+	
 	{
-		"Operacion":"Raiz",
+		"Operacion":"Suma",
 		"Valor1":
 		[
-			"Operacion":"raiz",
-			"Valor1":18
+			"Operacion":"seno",
+			"Valor1":90
 			
 		],
+		"Valor2":5.32
 	} 
 	"Texto":"Realizacion de Operaciones",
 	"Color-Fondo-Nodo":"Amarillo",
