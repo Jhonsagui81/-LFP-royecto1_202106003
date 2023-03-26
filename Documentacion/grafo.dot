@@ -1,8 +1,8 @@
 digraph {
 	rankdir=TB
-	9 [shape=circle style=filled color = blue]
- 	inverso1 -> 9 [shape=record color=red]
-	inverso1 [shape=circle style=filled color = blue, label=<Inverso: 0.11>]
+	60 [shape=circle style=filled color = blue]
+ 	seno1 -> 60 [shape=record color=red]
+	seno1 [shape=circle style=filled color = blue, label=<Seno: -0.3>]
  	3 [shape=circle style=filled color = blue]
  	Potencia102 -> 3 [shape=record color=red]
 	1.5 [shape=circle style=filled color = blue]
@@ -17,8 +17,8 @@ digraph {
  	potencia2 -> Resta102 [shape=record color=red]
 	potencia2 [shape=circle style=filled color = blue, label=<Potencia: 81.0>]
  	18 [shape=circle style=filled color = blue]
- 	Inverso103 -> 18 [shape=record color=red]
-	Inverso103 [shape=circle style=filled color = blue, label=<Inverso: 0.06>]
- 	inverso3 -> Inverso103 [shape=record color=red]
-	inverso3 [shape=circle style=filled color = blue, label=<Inverso: 18.0>]
+ 	Seno103 -> 18 [shape=record color=red]
+	Seno103 [shape=circle style=filled color = blue, label=<Seno: -0.75>]
+ 	seno3 -> Seno103 [shape=record color=red]
+	seno3 [shape=circle style=filled color = blue, label=<Seno: -0.68>]
  }
