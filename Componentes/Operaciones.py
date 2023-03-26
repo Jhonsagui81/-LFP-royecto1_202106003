@@ -372,7 +372,8 @@ class Operacion:
                     tipo = "Seno"
                     if cont_seno == 1:
                         res += operando + ' # '
-                        resnum = math.sin(float(operando)) #con flotante para evitar clavos
+                        x = float(operando)*(math.pi/180)
+                        resnum = math.sin(x) #con flotante para evitar clavos
 
                         #grafica
                         self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
@@ -387,7 +388,8 @@ class Operacion:
                     res += "(" + operado[0] + ") # "# y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
                     
                     if cont_seno == 1:
-                        resnum = math.sin(operado[1]) 
+                        x = float(operando)*(math.pi/180)
+                        resnum = math.sin(x) 
                         #Grafica sub elementos 
                         operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%|\&","",operado[0]) #quita el signo   
                         operado[0] = re.sub("\-","",operado[0]) #quita el signo 
@@ -417,7 +419,8 @@ class Operacion:
                     tipo = "Coseno"
                     if cont_coseno == 1:
                         res += operando + ' $ '
-                        resnum = math.cos(float(operando)) #con flotante para evitar clavos
+                        x = float(operando)*(math.pi/180)
+                        resnum = math.cos(x) #con flotante para evitar clavos
 
                         #grafica
                         self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
@@ -432,7 +435,8 @@ class Operacion:
                     res += "(" + operado[0] + ") $ "# y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
                     
                     if cont_coseno == 1:
-                        resnum = math.cos(operado[1]) 
+                        x = float(operando)*(math.pi/180)
+                        resnum = math.cos(x) 
                         #Grafica sub elementos 
                         operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%|\&","",operado[0]) #quita el signo  
                         operado[0] = re.sub("\-","",operado[0]) #quita el signo 
@@ -462,7 +466,8 @@ class Operacion:
                     tipo = "Tangente"
                     if cont_tangente == 1:
                         res += operando + ' % '
-                        resnum = math.tan(float(operando)) #con flotante para evitar clavos
+                        x = float(operando)*(math.pi/180)
+                        resnum = math.tan(x) #con flotante para evitar clavos
 
                         #grafica
                         self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
@@ -477,7 +482,8 @@ class Operacion:
                     res += "(" + operado[0] + ") % "# y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
                     
                     if cont_tangente == 1:
-                        resnum = math.tan(operado[1]) 
+                        x = float(operando)*(math.pi/180)
+                        resnum = math.tan(x) 
                         #Grafica sub elementos 
                         operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%|\&","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\-","",operado[0]) #quita el signo 
