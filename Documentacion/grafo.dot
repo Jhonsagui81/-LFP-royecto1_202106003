@@ -1,8 +1,8 @@
 digraph {
 	rankdir=TB
 	9 [shape=circle style=filled color = blue]
- 	coseno1 -> 9 [shape=record color=red]
-	coseno1 [shape=circle style=filled color = blue, label=<Coseno: -0.91>]
+ 	tangente1 -> 9 [shape=record color=red]
+	tangente1 [shape=circle style=filled color = blue, label=<Tangente: -0.45>]
  	3 [shape=circle style=filled color = blue]
  	Potencia102 -> 3 [shape=record color=red]
 	1.5 [shape=circle style=filled color = blue]
@@ -17,8 +17,8 @@ digraph {
  	potencia2 -> Resta102 [shape=record color=red]
 	potencia2 [shape=circle style=filled color = blue, label=<Potencia: 81.0>]
  	18 [shape=circle style=filled color = blue]
- 	Coseno103 -> 18 [shape=record color=red]
-	Coseno103 [shape=circle style=filled color = blue, label=<Coseno: 0.66>]
- 	coseno3 -> Coseno103 [shape=record color=red]
-	coseno3 [shape=circle style=filled color = blue, label=<Coseno: 0.79>]
+ 	Tangente103 -> 18 [shape=record color=red]
+	Tangente103 [shape=circle style=filled color = blue, label=<Tangente: -1.14>]
+ 	tangente3 -> Tangente103 [shape=record color=red]
+	tangente3 [shape=circle style=filled color = blue, label=<Tangente: -2.16>]
  }

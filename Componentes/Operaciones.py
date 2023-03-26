@@ -25,6 +25,7 @@ class Operacion:
         cont_inverso = 0
         cont_seno = 0
         cont_coseno = 0
+        cont_tangente = 0
         
         #SUMA
         
@@ -50,7 +51,7 @@ class Operacion:
                     resnum += operado[1]  #Se suma el resultado de la operacion anidada al total
                     
                     #Descomponer operacion anidada
-                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo 
+                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\*","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -97,7 +98,7 @@ class Operacion:
                         resnum -= operado[1]
 
                     #Descomponer operacion anidada
-                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo 
+                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo  
                     operado[0] = re.sub("\-","",operado[0]) #quita el signo
                     operado[0] = re.sub("\*","",operado[0]) #quita el signo  
                     operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -135,7 +136,7 @@ class Operacion:
                     resnum = resnum * float(operado[1])
         
                     #Descomponer operacion anidada
-                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo 
+                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\*","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -196,7 +197,7 @@ class Operacion:
                     if cont_division == 1:
                         resnum += operado[1] 
                     #Descomponer operacion anidada
-                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo  
+                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\*","",operado[0]) #quita el signo
                     operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -249,7 +250,7 @@ class Operacion:
                             resnum = resnum * aux1 #con flotante para evitar clavos
 
                     #Descomponer operacion anidada
-                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo 
+                    operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo  
                     operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                     operado[0] = re.sub("\*","",operado[0]) #quita el signo
                     operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -294,7 +295,7 @@ class Operacion:
                     if cont_raiz == 1:
                         resnum = math.sqrt(operado[1]) 
                         #Grafica sub elementos 
-                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo 
+                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo  
                         operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\*","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -342,7 +343,7 @@ class Operacion:
                         #if operado [1] == 0: Error division by cero
                         resnum = 1/operado[1]
                         #Grafica sub elementos 
-                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo 
+                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo  
                         operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\*","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -387,7 +388,7 @@ class Operacion:
                     if cont_seno == 1:
                         resnum = math.sin(operado[1]) 
                         #Grafica sub elementos 
-                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo  
+                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo   
                         operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\*","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -432,7 +433,7 @@ class Operacion:
                     if cont_coseno == 1:
                         resnum = math.cos(operado[1]) 
                         #Grafica sub elementos 
-                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$","",operado[0]) #quita el signo 
+                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\-","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\*","",operado[0]) #quita el signo 
                         operado[0] = re.sub("\/","",operado[0]) #quita el signo 
@@ -452,40 +453,47 @@ class Operacion:
         
         #tan math.tan(x)
         elif self.tipo.lower() == 'tangente':  
-            tipo = "Suma"
+            tipo = "Tangente"
             for operando in self.operandos:
+                cont_tangente += 1
                 if type(operando) is not Operacion:  #significa que es algo simple como un NUMERO 
                     #resultado numerico 
-                    tipo = "Suma"
-                    res += operando + ' + '
-                    resnum += round(float(operando), 2) #con flotante para evitar clavos
+                    tipo = "Tangente"
+                    if cont_tangente == 1:
+                        res += operando + ' % '
+                        resnum = math.tan(float(operando)) #con flotante para evitar clavos
 
-                    #grafica
-                    self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
-
-                    
+                        #grafica
+                        self.texto += f"\t{str(operando)} [shape=circle style=filled color = blue]\n "
+                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operando)} [shape=record color=red]\n"
+                    elif cont_tangente == 2:
+                        #Error - Solo se permite 1 valor 
+                        print("Error logico, solo se permite 1 valor xd")
                 else:
                     operado = operando.operar(id)     #Recursividad en caso la operacion venga anidada con el else llamamos de nuevo para traer los numeros
                     # regresa con valores - [cadena, resultado]
                     #en caso venga anidada sera aux para obtener nodos internos
-                    res += "(" + operado[0] + ") + "# y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
-                    resnum += operado[1]  #Se suma el resultado de la operacion anidada al total
+                    res += "(" + operado[0] + ") % "# y asignarlos en el tipo de operacion.  Par identificar que era operacion concatenada
                     
-                    #Descomponer operacion anidada
-                    operado[0] = re.sub("\+","",operado[0]) #quita el signo 
-                    operado[0] = re.sub("\-","",operado[0]) #quita el signo 
-                    operado[0] = re.sub("\*","",operado[0]) #quita el signo 
-                    operado[0] = re.sub("\/","",operado[0]) #quita el signo 
-                    operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
-                    anidada = operado[0].split()    #se descompone 
-                    for i in anidada:   #se itera 
-                        self.aux += float(i)   #se crea el total interno 
-                        self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
-                        self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
-                    self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
-                    self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                    if cont_tangente == 1:
+                        resnum = math.tan(operado[1]) 
+                        #Grafica sub elementos 
+                        operado[0] = re.sub("\+|\^|\√|\@|\#|\$|\%","",operado[0]) #quita el signo 
+                        operado[0] = re.sub("\-","",operado[0]) #quita el signo 
+                        operado[0] = re.sub("\*","",operado[0]) #quita el signo 
+                        operado[0] = re.sub("\/","",operado[0]) #quita el signo 
+                        operado[0] = re.sub("\(|\)","",operado[0]) #quita el signo 
+                        anidada = operado[0].split()    #se descompone 
+                        for i in anidada:   #se itera 
+                            self.texto += f"\t{str(i)} [shape=circle style=filled color = blue]\n " #nodo operacion anidada
+                            self.texto += f"\t{str(operado[3])+str(id+100)} -> {str(i)} [shape=record color=red]\n"  #coneccion con subnodo del original 
+                        self.texto += f"\t{str(operado[3])+str(id+100)} [shape=circle style=filled color = blue, label=<{str(operado[3])+': '+ str(round(operado[1],2))}>]\n "  #crea subnodo del original
+                        self.texto += f"\t{str(self.tipo.lower())+str(id)} -> {str(operado[3])+str(id+100)} [shape=record color=red]\n"  #se conectan con el original
+                    else:
+                        print("Error logico, solo se permite 1 valor rt")
+                        #Pendiende guardarError 
             #finaliza For
+            cont_tangente = 0
             self.texto += f"\t{str(self.tipo.lower())+str(id)} [shape=circle style=filled color = blue, label=<{str(tipo)+': '+ str(round(resnum,2))}>]\n " #nodo original de cada operacion
         
         #Modulo -> math.fmod(x,y)
