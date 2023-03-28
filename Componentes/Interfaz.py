@@ -34,7 +34,7 @@ def abrir_Tecnico():
     #                                                 ("All file","*.txt")))
     v3.img_object_li.clear()
     v5.img_object_li.clear()
-    v2 = v1.pdf_view(ventana_Tecnico, pdf_location=open("./Documentacion/ManualTecnico.pdf", "r"),width=77, height=100)
+    v2 = v1.pdf_view(ventana_Tecnico, pdf_location=open("/home/jhonatan/Documentos/Universidad_USAC/Semestre5/01_LenguajesFormales/Proyecto1/Documentacion/ManualTecnico.pdf", "r"),width=77, height=100)
     
     v2.pack(pady=(0,0))
 
@@ -48,7 +48,7 @@ def abrir_Usuario():
     
     v1.img_object_li.clear()
     v5.img_object_li.clear()
-    v4 = v3.pdf_view(ventana_pdf, pdf_location=open("./Documentacion/MANUAL_DE_USUARIO.pdf", "r"),width=77, height=100)
+    v4 = v3.pdf_view(ventana_pdf, pdf_location=open("/home/jhonatan/Documentos/Universidad_USAC/Semestre5/01_LenguajesFormales/Proyecto1/Documentacion/MANUAL_DE_USUARIO.pdf", "r"),width=77, height=100)
     v4.pack(pady=(0,0))
 
 def abrir_Ayuda():
@@ -60,7 +60,7 @@ def abrir_Ayuda():
     
     v1.img_object_li.clear()
     v3.img_object_li.clear()
-    v4 = v3.pdf_view(ventana_pdf, pdf_location=open("./Documentacion/INFORMACION_DESARROLLADOR.pdf", "r"),width=77, height=100)
+    v4 = v3.pdf_view(ventana_pdf, pdf_location=open("/home/jhonatan/Documentos/Universidad_USAC/Semestre5/01_LenguajesFormales/Proyecto1/Documentacion/INFORMACION_DESARROLLADOR.pdf", "r"),width=77, height=100)
     v4.pack(pady=(0,0))
 #Analizar
 def Analizar():
@@ -125,7 +125,7 @@ def Analizar():
             texto += '\t},\n'
         texto += '}\n'
         print(texto)
-        file = open("./Documentacion/Errores.txt", "w")
+        file = open("/home/jhonatan/Documentos/Universidad_USAC/Semestre5/01_LenguajesFormales/Proyecto1/Documentacion/Errores.txt", "w")
         file.write(texto)
         file.close()
 
@@ -134,7 +134,7 @@ def Analizar():
 #Abrir Archivo
 def AbrirArchivoError():
 
-    fichero = open("./Documentacion/Errores.txt", 'r')
+    fichero = open("/home/jhonatan/Documentos/Universidad_USAC/Semestre5/01_LenguajesFormales/Proyecto1/Documentacion/Errores.txt", 'r')
     contenido = "Estos Son los errores detectados: \n\n"
     contenido += fichero.read()
     caja_texto.delete(1.0, 'end')

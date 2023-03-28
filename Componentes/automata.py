@@ -412,10 +412,10 @@ class Automata:
             # ResultadoPDF(lista_Operaciones, lista_Resultados)
         texto += "\t}\n"
         texto += "}\n"
-        file = open("./Documentacion/grafo.dot", "w")
+        file = open("/home/jhonatan/Descargas/grafo.dot", "w")
         file.write(texto)
         file.close()
-        os.system("dot -Tpdf ./Documentacion/grafo.dot -o  ./Documentacion/grafo.pdf")
+        os.system("dot -Tpdf /home/jhonatan/Descargas/grafo.dot -o  /home/jhonatan/Descargas/grafo.pdf")
 
     def ErrorLogico(self, operandos):
         

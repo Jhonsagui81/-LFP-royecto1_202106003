@@ -2,10 +2,20 @@
 	{
 		"No.":1
 		"Descripcion-Token":{ 
-			"Lexema": /
-			"Tipo": Error Logico
-			"Columna": 0
-			"Fila": 0
+			"Lexema": 2
+			"Tipo": Error Sintactico
+			"Columna": 5
+			"Fila": 5
+		}
+	},
+{
+	{
+		"No.":2
+		"Descripcion-Token":{ 
+			"Lexema": 3
+			"Tipo": Error Sintactico
+			"Columna": 6
+			"Fila": 5
 		}
 	},
 }
